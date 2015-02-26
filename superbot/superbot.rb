@@ -130,7 +130,7 @@ class MumbleMPD
 				# This implements ducking Bot when others speak
 				while (true==true)
 					sleep 0.02
-					if ((Time.now - @ lastaudio) < 0.1) then
+					if ((Time.now - @lastaudio) < 0.1) then
 						@cli.player.volume = 20
 					else
 						@cli.player.volume = 100
