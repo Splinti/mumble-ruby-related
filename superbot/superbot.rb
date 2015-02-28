@@ -127,7 +127,6 @@ class MumbleMPD
 		begin
 			@lastaudio = Time.now
 			t = Thread.new do
-				#$stdin.gets
 				# This implements ducking Bot when others speak
 				if(@fade_out_while_speak) then
 					while (true==true)
@@ -138,6 +137,8 @@ class MumbleMPD
 							@cli.player.volume = 100
 						end
 					end
+				else
+					$stdin.gets
 				end
 			end
 			
