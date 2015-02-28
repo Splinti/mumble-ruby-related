@@ -7,6 +7,7 @@ def ext_config()
 	@listen_to_registered_users_only = true 	#Whether the bot should only react to commands from registered users.
 	@stop_on_unregistered_users = true 	        #Whether the bot should stop playing music if a unregistered user joins the channel.
 	@use_comment_for_status_display = false 	#Whether to use comment to display song info; false = send to channel, true = comment.
+	@fade_out_while_speak = true
 	
 	#This template must always contain four %s strings.
 	@template_if_comment_enabled = "<b>Artist: </b>%s<br />"\

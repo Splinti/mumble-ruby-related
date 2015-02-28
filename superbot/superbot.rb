@@ -18,6 +18,7 @@ class MumbleMPD
 		@use_vbr = 1 
 		@stop_on_unregistered_users = true
 		@use_comment_for_status_display = false
+		@fade_out_while_speak = true
 		@template_if_comment_enabled = "<b>Artist: </b>%s<br />"\
 							+ "<b>Title: </b>%s<br />" \
 							+ "<b>Album: </b>%s<br /><br />" \
@@ -128,12 +129,14 @@ class MumbleMPD
 			t = Thread.new do
 				#$stdin.gets
 				# This implements ducking Bot when others speak
-				while (true==true)
-					sleep 0.02
-					if ((Time.now - @lastaudio) < 0.1) then
-						@cli.player.volume = 20
-					else
-						@cli.player.volume = 100
+				if(@fade_out_while_speak) then
+					while (true==true)
+						sleep 0.02
+						if ((Time.now - @lastaudio) < 0.1) then
+							@cli.player.volume = 20
+						else
+							@cli.player.volume = 100
+						end
 					end
 				end
 			end
